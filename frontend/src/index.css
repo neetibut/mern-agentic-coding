@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* ── Cyberpunk design tokens ──────────────────────────────────────────── */
+@theme {
+  --color-void: #0a0a12;
+  --color-panel: #11111d;
+  --color-panel-2: #161627;
+  --color-cyan: #00f0ff;
+  --color-magenta: #ff00e5;
+  --color-purple: #9d4dff;
+  --color-lime: #b6ff3c;
+  --color-amber: #ffb347;
+  --color-edge: #2a2a44;
+  --color-muted: #8b8ba7;
+
+  --font-display: "Orbitron", sans-serif;
+  --font-body: "Rajdhani", sans-serif;
+  --font-mono: "Share Tech Mono", monospace;
+
+  --shadow-glow-cyan: 0 0 8px rgba(0, 240, 255, 0.6), 0 0 24px rgba(0, 240, 255, 0.35);
+  --shadow-glow-magenta: 0 0 8px rgba(255, 0, 229, 0.6), 0 0 24px rgba(255, 0, 229, 0.35);
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-void);
+  color: #e6e6f0;
+  font-family: var(--font-body);
+  /* Subtle neon grid backdrop */
+  background-image:
+    linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 229, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, rgba(157, 77, 255, 0.12), transparent 60%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
+}
+
+::selection {
+  background: var(--color-magenta);
+  color: #0a0a12;
+}
+
+/* Neon scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-edge);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple);
+}
+
+/* ── Reusable theme utilities ─────────────────────────────────────────── */
+@layer components {
+  .neon-text {
+    text-shadow: 0 0 6px currentColor, 0 0 18px currentColor;
+  }
+
+  .glitch-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-cyan),
+      var(--color-magenta),
+      transparent
+    );
+  }
+}
