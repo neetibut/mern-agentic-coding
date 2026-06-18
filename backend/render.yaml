@@ -1,0 +1,18 @@
+# Render Blueprint — deploy the backend as a Web Service.
+# In the Render dashboard, set the secret env vars (MONGODB_URI, JWT_SECRET, CLIENT_URL).
+services:
+  - type: web
+    name: cyberpunk-auth-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_URL
+        sync: false
