@@ -1,5 +1,5 @@
 {
-  "name": "cyberpunk-auth-backend",
+  "name": "@neonauth/api",
   "version": "1.0.0",
   "description": "Express + Mongoose + JWT backend for the cyberpunk auth/profile app",
   "type": "module",

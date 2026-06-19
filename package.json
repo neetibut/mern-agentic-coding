@@ -1,0 +1,20 @@
+{
+  "name": "neonauth",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NEONAUTH — MERN cyberpunk auth + profile app (npm-workspaces monorepo)",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace @neonauth/api",
+    "dev:web": "npm run dev --workspace @neonauth/web",
+    "start:api": "npm run start --workspace @neonauth/api",
+    "build:web": "npm run build --workspace @neonauth/web",
+    "preview:web": "npm run preview --workspace @neonauth/web"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
