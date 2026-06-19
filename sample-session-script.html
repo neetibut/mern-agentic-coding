@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started with Agentic Engineering for MERN Developers</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #fafbfc;
+    --bg-card: #f1f3f5;
+    --accent: #34d399;
+    --accent-dim: #059669;
+    --accent-light: #6ee7b7;
+    --pop: #f87171;
+    --pop-dim: #b91c1c;
+    --amber: #f59e0b;
+    --amber-bg: #fffbeb;
+    --amber-text: #92400e;
+    --text: #334155;
+    --text-dim: #475569;
+    --text-bright: #0f172a;
+    --border: #e2e8f0;
+  }
+
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+
+  /* ---- SLIDE SHELL ---- */
+  .slide { display: none; width: 100vw; height: 100vh; padding: 5vh 5vw; position: relative; overflow: hidden; }
+  .slide.active { display: flex; flex-direction: column; gap: 0.5vh; }
+  .slide.cover.active, .slide.ending.active, .slide.idea.active, .slide.divider.active {
+    justify-content: center; align-items: center; text-align: center; gap: 2.2vh;
+  }
+
+  /* ---- DECK CHROME ---- */
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--accent); transition: width 0.2s ease; z-index: 100; }
+  .slide-counter { position: fixed; bottom: 2vh; right: 2.5vw; font-size: clamp(15px, 1.2vw, 17px); color: var(--text-dim); font-weight: 500; z-index: 100; font-variant-numeric: tabular-nums; }
+
+  /* ---- SHARED TYPE ---- */
+  h1 { font-size: clamp(40px, 6vw, 82px); font-weight: 800; line-height: 1.05; letter-spacing: -2.5px; color: var(--text-bright); }
+  h2 { font-size: clamp(28px, 3.4vw, 48px); font-weight: 800; line-height: 1.12; letter-spacing: -1.5px; color: var(--text-bright); }
+  .accent { color: var(--accent-dim); }
+  .subtitle { font-size: clamp(16px, 1.6vw, 23px); color: var(--text-dim); font-weight: 400; margin-top: 0.6vh; line-height: 1.5; max-width: 72ch; }
+  .subtitle b { color: var(--text); font-weight: 600; }
+  .sep { width: 64px; height: 4px; background: var(--accent); border-radius: 2px; margin: 1.6vh 0; }
+  code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9em; color: var(--accent-dim); }
+
+  /* ---- COVER / ENDING ---- */
+  .eyebrow { font-size: clamp(13px, 1.2vw, 16px); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-dim); }
+  .lede { font-size: clamp(17px, 1.8vw, 24px); color: var(--text-dim); max-width: 60ch; line-height: 1.5; }
+  .cover-chips { display: flex; gap: clamp(10px, 1.2vw, 18px); flex-wrap: wrap; justify-content: center; margin-top: 1.4vh; }
+  .cover-chip { font-size: clamp(13px, 1.2vw, 16px); font-weight: 600; color: var(--accent-dim); background: #d1fae5; border: 1px solid var(--accent-light); border-radius: 20px; padding: 0.6vh 1.2vw; }
+  .byline { font-size: clamp(14px, 1.4vw, 19px); color: var(--text-dim); margin-top: 0.6vh; }
+
+  /* ---- IDEA ---- */
+  .idea .kicker { font-size: clamp(13px, 1.2vw, 16px); font-weight: 800; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-dim); }
+  .idea .headline { font-size: clamp(32px, 4.8vw, 64px); font-weight: 800; letter-spacing: -2px; line-height: 1.08; color: var(--text-bright); max-width: 20ch; }
+  .idea .sub { font-size: clamp(16px, 1.75vw, 23px); color: var(--text-dim); max-width: 58ch; line-height: 1.5; }
+  .idea .sub b { color: var(--text); font-weight: 600; }
+  .idea .mini { font-size: clamp(14px, 1.3vw, 18px); color: var(--text-dim); font-style: italic; max-width: 60ch; }
+
+  /* ---- DIVIDER ---- */
+  .divider { background: linear-gradient(135deg, #f0fdf4, #ecfdf5); }
+  .divider .part { font-size: clamp(14px, 1.3vw, 18px); font-weight: 800; text-transform: uppercase; letter-spacing: 5px; color: var(--accent-dim); }
+  .divider h1 { font-size: clamp(44px, 7.5vw, 100px); }
+  .divider .d-sub { font-size: clamp(17px, 1.8vw, 24px); color: var(--text-dim); max-width: 54ch; line-height: 1.5; }
+
+  /* ---- CONTENT BODY ---- */
+  .body { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; margin-top: 0.4vh; }
+
+  /* ---- DUO / TRIO / QUAD big cards ---- */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2.2vw, 40px); }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.8vw, 30px); }
+  .quad { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 1.8vw, 30px); }
+  .bcard { background: #fff; border: 1px solid var(--border); border-top: 6px solid var(--accent); border-radius: 16px; padding: clamp(16px, 2.6vh, 36px) clamp(18px, 2.2vw, 38px); display: flex; flex-direction: column; gap: clamp(6px, 1vh, 14px); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .bcard .bc-t { font-size: clamp(18px, 2vw, 28px); font-weight: 800; color: var(--text-bright); letter-spacing: -0.5px; line-height: 1.1; }
+  .bcard .bc-l { font-size: clamp(13px, 1.4vw, 19px); color: var(--text-dim); line-height: 1.5; }
+  .bcard .bc-l b { color: var(--text); font-weight: 600; }
+  .trio .bcard .bc-t, .quad .bcard .bc-t { font-size: clamp(16px, 1.7vw, 24px); }
+  .trio .bcard .bc-l, .quad .bcard .bc-l { font-size: clamp(12px, 1.3vw, 17px); }
+  .bcard.warn { border-top-color: var(--pop); }
+  .bcard.warn .bc-t { color: var(--pop-dim); }
+  .bcard.good { border-top-color: var(--accent-dim); background: linear-gradient(135deg, #f0fdf4, #ecfdf5); }
+  .bcard.good .bc-t { color: var(--accent-dim); }
+  .bcard .bc-tag { font-size: clamp(11px, 1vw, 14px); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-dim); }
+  .bcard.warn .bc-tag { color: var(--pop-dim); }
+
+  /* ---- CONTRAST ---- */
+  .contrast { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(12px, 1.8vw, 32px); width: 100%; max-width: clamp(760px, 86vw, 1140px); margin: 0 auto; }
+  .cstate { border-radius: 18px; padding: clamp(20px, 3.6vh, 48px) clamp(18px, 2vw, 36px); text-align: center; border: 2px solid; }
+  .cstate.old { background: #fef2f2; border-color: var(--pop); }
+  .cstate.new { background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-color: var(--accent); }
+  .cstate .cl { font-size: clamp(11px, 1vw, 14px); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  .cstate.old .cl { color: var(--pop-dim); }
+  .cstate.new .cl { color: var(--accent-dim); }
+  .cstate .cv { font-size: clamp(18px, 2.2vw, 34px); font-weight: 800; letter-spacing: -0.8px; color: var(--text-bright); line-height: 1.12; margin: 0.4vh 0; }
+  .cstate .cd { font-size: clamp(13px, 1.3vw, 18px); color: var(--text-dim); line-height: 1.45; }
+  .carrow { color: var(--accent); font-size: clamp(26px, 3vw, 48px); font-weight: 700; }
+
+  /* ---- MAP LIST ---- */
+  .maplist { display: flex; flex-direction: column; gap: clamp(6px, 0.9vh, 12px); width: 100%; max-width: clamp(720px, 82vw, 1080px); margin: 0 auto; }
+  .mrow { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: clamp(10px, 1.4vw, 24px); background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: clamp(8px, 1.3vh, 16px) clamp(14px, 1.6vw, 28px); }
+  .mrow .mn { flex: none; min-width: clamp(24px, 2vw, 34px); height: clamp(24px, 2vw, 34px); padding: 0 0.4em; border-radius: 50%; background: var(--accent); color: #fff; font-size: clamp(12px, 1.15vw, 17px); font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .mrow .ml { font-size: clamp(15px, 1.5vw, 21px); font-weight: 700; color: var(--text-bright); }
+  .mrow .mo { font-size: clamp(12px, 1.2vw, 16px); font-weight: 600; color: var(--accent-dim); text-align: right; }
+
+  /* ---- NUMBERED ---- */
+  .numlist { display: flex; flex-direction: column; gap: clamp(7px, 1.1vh, 15px); width: 100%; max-width: clamp(700px, 76vw, 1020px); margin: 0 auto; }
+  .nrow { display: flex; align-items: center; gap: clamp(12px, 1.5vw, 26px); background: var(--bg-card); border: 1px solid var(--border); border-left: 5px solid var(--accent); border-radius: 13px; padding: clamp(11px, 1.7vh, 24px) clamp(16px, 1.9vw, 32px); }
+  .nrow .nn { flex: none; width: clamp(28px, 2.4vw, 40px); height: clamp(28px, 2.4vw, 40px); border-radius: 50%; background: var(--accent-dim); color: #fff; font-size: clamp(15px, 1.4vw, 21px); font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .nrow .nt { font-size: clamp(14px, 1.55vw, 22px); color: var(--text); line-height: 1.4; }
+  .nrow .nt b { color: var(--text-bright); font-weight: 700; }
+
+  /* ---- closing band ---- */
+  .closing { margin-top: clamp(14px, 2vh, 28px); border: 2px solid var(--accent); border-radius: 14px; background: linear-gradient(135deg, #f0fdf4, #ecfdf5); padding: clamp(12px, 1.8vh, 24px) clamp(18px, 2vw, 32px); font-size: clamp(14px, 1.45vw, 20px); line-height: 1.5; color: var(--text); text-align: center; }
+  .closing b { color: var(--accent-dim); font-weight: 700; }
+
+  /* ---- FOLDER TREE (bespoke, scoped) ---- */
+  #build-tree .mono { font-family: 'SF Mono', 'Fira Code', monospace; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: clamp(18px, 3vh, 42px) clamp(22px, 3vw, 52px); font-size: clamp(13px, 1.5vw, 21px); line-height: 1.85; color: var(--text); max-width: clamp(520px, 62vw, 860px); margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  #build-tree .mono .dir { color: var(--text-dim); font-weight: 700; }
+  #build-tree .mono .hi { color: var(--accent-dim); font-weight: 800; }
+  #build-tree .mono .tagline { color: var(--accent-dim); font-style: normal; font-family: 'Inter', sans-serif; font-size: 0.7em; font-weight: 700; }
+
+  /* ---- ENDING principles ---- */
+  #ending .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 1.6vw, 26px); width: 100%; max-width: clamp(720px, 84vw, 1120px); margin-top: 1vh; }
+  #ending .principle { background: #fff; border: 1px solid var(--border); border-top: 5px solid var(--accent); border-radius: 14px; padding: clamp(16px, 2.4vh, 30px) clamp(14px, 1.6vw, 26px); text-align: left; }
+  #ending .principle .pn { font-size: clamp(11px, 1.05vw, 14px); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-dim); }
+  #ending .principle .ph { font-size: clamp(15px, 1.5vw, 21px); font-weight: 800; color: var(--text-bright); line-height: 1.25; margin-top: 0.5vh; }
+  #ending .principle p { font-size: clamp(13px, 1.25vw, 17px); color: var(--text-dim); font-weight: 500; line-height: 1.45; margin-top: 0.4vh; }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="slide-counter" id="counter"></div>
+
+<!-- ============================== COVER ============================== -->
+<section class="slide cover active" id="cover">
+  <div class="eyebrow">10-Minute Intro &middot; Teaching Session</div>
+  <h1>Agentic Engineering<br>for <span class="accent">MERN Developers</span></h1>
+  <p class="lede">Not just asking AI to write code &mdash; working with an AI coding agent in a disciplined way: clear context, good judgement, review checkpoints, and ownership of the result.</p>
+  <p class="byline">with Neeti</p>
+</section>
+
+<!-- ============================== GUIDING PRINCIPLE ============================== -->
+<section class="slide idea" id="principle">
+  <div class="kicker">The idea that guides everything</div>
+  <div class="headline">The agent helps us move faster &mdash; <span class="accent">we stay responsible</span>.</div>
+  <p class="sub">The AI can accelerate the work, but the developer still owns the <b>direction, quality, and correctness</b> of the software.</p>
+</section>
+
+<!-- ============================== ACT 1 — WHY MERN ============================== -->
+<section class="slide divider" id="d-mern">
+  <div class="part">First</div>
+  <h1>Why MERN?</h1>
+  <p class="d-sub">A practical place to learn the whole picture of full-stack development.</p>
+</section>
+
+<section class="slide" id="mern-what">
+  <h2>MERN, in <span class="accent">four parts</span></h2>
+  <p class="subtitle">One JavaScript stack, front to back.</p>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="quad">
+      <div class="bcard"><div class="bc-t">MongoDB</div><div class="bc-l">The database &mdash; where data is stored.</div></div>
+      <div class="bcard"><div class="bc-t">Express</div><div class="bc-l">The backend framework &mdash; handles requests.</div></div>
+      <div class="bcard"><div class="bc-t">React</div><div class="bc-l">The frontend &mdash; runs in the browser.</div></div>
+      <div class="bcard"><div class="bc-t">Node.js</div><div class="bc-l">The runtime &mdash; JavaScript on the server.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide idea" id="mern-why">
+  <div class="kicker">Why this stack</div>
+  <div class="headline">A practical on-ramp to <span class="accent">full-stack</span>.</div>
+  <p class="sub">MERN exposes you to the whole picture &mdash; user interfaces, APIs, databases, project structure, debugging, and maintenance.</p>
+  <p class="mini">Not always the best production stack &mdash; but a strong foundation for practising the engineering ideas.</p>
+</section>
+
+<!-- ============================== ACT 2 — WHAT IS AGENTIC CODING ============================== -->
+<section class="slide divider" id="d-coding">
+  <div class="part">Second</div>
+  <h1>What is<br>Agentic AI Coding?</h1>
+  <p class="d-sub">Powerful &mdash; and exactly where the risk begins.</p>
+</section>
+
+<section class="slide idea" id="coding-what">
+  <div class="kicker">The definition</div>
+  <div class="headline">Using an AI agent to <span class="accent">help build software</span>.</div>
+  <p class="sub">Tools like Claude Code, Cursor, or Codex work inside the codebase &mdash; reading files, planning, editing code, running commands, debugging, and writing docs.</p>
+</section>
+
+<section class="slide idea" id="coding-risk">
+  <div class="kicker">The risk</div>
+  <div class="headline">&ldquo;Build me a full-stack app&rdquo; makes the AI <span class="accent">guess</span>.</div>
+  <p class="sub">One vague prompt, and the agent has to invent everything you didn&rsquo;t say.</p>
+</section>
+
+<section class="slide" id="coding-guesses">
+  <h2>Five things it has to <span class="accent">guess</span></h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="maplist">
+      <div class="mrow"><span class="mn">1</span><span class="ml">The users</span></div>
+      <div class="mrow"><span class="mn">2</span><span class="ml">The product scope</span></div>
+      <div class="mrow"><span class="mn">3</span><span class="ml">The architecture</span></div>
+      <div class="mrow"><span class="mn">4</span><span class="ml">The database design</span></div>
+      <div class="mrow"><span class="mn">5</span><span class="ml">What &ldquo;done&rdquo; means</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide idea" id="coding-fragile">
+  <div class="headline">Impressive on the surface. <span class="accent">Fragile</span> underneath.</div>
+  <p class="sub">The result can look great yet be hard to understand, hard to debug, and hard to maintain. That gap is what <b>Agentic Engineering</b> closes.</p>
+</section>
+
+<!-- ============================== ACT 3 — CODING VS ENGINEERING ============================== -->
+<section class="slide divider" id="d-vs">
+  <div class="part">Third</div>
+  <h1>Coding vs<br>Engineering</h1>
+  <p class="d-sub">The distinction to remember &mdash; one is a tool, the other is a discipline.</p>
+</section>
+
+<section class="slide" id="vs-define">
+  <h2>Two different <span class="accent">things</span></h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="duo">
+      <div class="bcard"><div class="bc-tag">The activity</div><div class="bc-t">Agentic AI Coding</div><div class="bc-l">Using an AI agent to help build software.</div></div>
+      <div class="bcard good"><div class="bc-tag">The discipline</div><div class="bc-t">Agentic Engineering</div><div class="bc-l">The process that keeps that work <b>clear, reviewable, and maintainable</b>.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="vs-working">
+  <h2>Engineering is a <span class="accent">way of working</span></h2>
+  <p class="subtitle">Not a single prompt, not a specific tool.</p>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="maplist">
+      <div class="mrow"><span class="mn">1</span><span class="ml">Define the problem clearly</span></div>
+      <div class="mrow"><span class="mn">2</span><span class="ml">Give the agent useful context</span></div>
+      <div class="mrow"><span class="mn">3</span><span class="ml">Break the work into small tasks</span></div>
+      <div class="mrow"><span class="mn">4</span><span class="ml">Ask for a plan before code changes</span></div>
+      <div class="mrow"><span class="mn">5</span><span class="ml">Review the output and test the behaviour</span></div>
+      <div class="mrow"><span class="mn">6</span><span class="ml">Stay responsible for the final result</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="vs-vibe">
+  <h2>The useful contrast: <span class="accent">Vibe Coding</span></h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="contrast">
+      <div class="cstate old"><div class="cl">Vibe coding</div><div class="cv">No map</div><div class="cd">A vague instruction &mdash; and you accept whatever it produces.</div></div>
+      <div class="carrow">&rarr;</div>
+      <div class="cstate new"><div class="cl">Agentic Engineering</div><div class="cv">Map + checkpoints</div><div class="cd">The problem, the users, the MVP, the constraints, the architecture &mdash; and a plan before any file changes.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide idea" id="vs-map">
+  <div class="headline">Don&rsquo;t let the AI drive <span class="accent">without a map</span>.</div>
+  <p class="sub">Vibe coding hands over the wheel. Agentic Engineering gives the agent a <b>map, checkpoints, and engineering standards</b>.</p>
+</section>
+
+<!-- ============================== ACT 4 — PREPARE CONTEXT ============================== -->
+<section class="slide divider" id="d-context">
+  <div class="part">The first layer</div>
+  <h1>Prepare Context<br>Before Coding</h1>
+  <p class="d-sub">Before a single line of the app &mdash; set the agent up to help well.</p>
+</section>
+
+<section class="slide" id="build-tree">
+  <h2>What we&rsquo;d build first: the <span class="accent">foundation</span></h2>
+  <p class="subtitle">The code comes later. This comes first.</p>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="mono">
+mern-agentic-monorepo/<br>
+&nbsp;&nbsp;<span class="dir">apps/</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">web/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">React app</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">api/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">Express API</span><br>
+&nbsp;&nbsp;<span class="dir">packages/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">shared code (when needed)</span><br>
+&nbsp;&nbsp;<span class="hi">docs/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">&larr; the part that matters most early on</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">BUSINESS_PROBLEMS.md</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">PRD.md</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">AGENTIC_ENGINEERING_PLAN.md</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">ARCHITECTURE.md</span><br>
+&nbsp;&nbsp;<span class="hi">AGENTS.md</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">&larr; lean, always-loaded agent context</span><br>
+&nbsp;&nbsp;README.md<br>
+&nbsp;&nbsp;package.json&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">workspace root</span><br>
+&nbsp;&nbsp;.gitignore
+    </div>
+  </div>
+</section>
+
+<section class="slide idea" id="docs-matter">
+  <div class="kicker">The key insight</div>
+  <div class="headline">The most important folder is <span class="accent">docs/</span> &mdash; not the code.</div>
+  <p class="sub">Those documents are how you give the agent context. And context is one of the most important materials we provide: <b>the better the context, the better the agent can help.</b></p>
+  <p class="mini">Keep one lean <code>AGENTS.md</code> at the root as the always-loaded index &mdash; it points the agent to these heavier docs instead of repeating them.</p>
+</section>
+
+<section class="slide idea" id="step1">
+  <div class="kicker">Step 1</div>
+  <div class="headline">Start with <span class="accent">business problems</span>.</div>
+  <p class="sub">Write <code>BUSINESS_PROBLEMS.md</code> yourself, first. The human developer sets the initial direction &mdash; don&rsquo;t hand this to the AI immediately.</p>
+  <p class="mini">They don&rsquo;t need to be perfect &mdash; just clear enough to review.</p>
+</section>
+
+<section class="slide idea" id="step2">
+  <div class="kicker">Step 2</div>
+  <div class="headline">Use AI to <span class="accent">challenge your thinking</span>.</div>
+  <p class="sub">Not a code generator yet &mdash; a thinking partner. Ask it to find unclear problems, question your assumptions, and sharpen the statements. <b>No PRD yet.</b></p>
+  <p class="mini">Good AI-assisted development starts with clearer thinking, not code.</p>
+</section>
+
+<section class="slide idea" id="step3">
+  <div class="kicker">Step 3</div>
+  <div class="headline">Now generate the <span class="accent">PRD and architecture</span>.</div>
+  <p class="sub">With the problems clearer, let the agent draft the Product Requirements Document &mdash; then the architecture.</p>
+</section>
+
+<section class="slide" id="prd">
+  <h2>What a <span class="accent">PRD</span> captures</h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="maplist">
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Product overview</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Target users &amp; their problems</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Goals &amp; non-goals</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">User stories</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">MVP scope &amp; success criteria</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Assumptions &amp; open questions</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="arch">
+  <h2>What the <span class="accent">architecture</span> doc explains</h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="maplist">
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Frontend &amp; backend structure</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Database design</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">API structure</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Data flow</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Key technical decisions</span></div>
+      <div class="mrow"><span class="mn">&#9656;</span><span class="ml">Risks &amp; trade-offs</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide idea" id="review">
+  <div class="kicker">Review &mdash; don&rsquo;t rubber-stamp</div>
+  <div class="headline">The best beginner architecture is the one you can <span class="accent">explain</span>.</div>
+  <p class="sub">If the MVP is too big, shrink it. If the design is too complex, simplify it. If the agent adds tools you don&rsquo;t need, challenge them.</p>
+</section>
+
+<!-- ============================== ACT 5 — SAFETY RULES ============================== -->
+<section class="slide divider" id="d-safety">
+  <div class="part">Before any code</div>
+  <h1>Safety Rules</h1>
+  <p class="d-sub">Guardrails that keep you in control of the agent.</p>
+</section>
+
+<section class="slide" id="safety-process">
+  <h2>Keep control of the <span class="accent">work</span></h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="quad">
+      <div class="bcard"><div class="bc-t">Plan before code</div><div class="bc-l">Ask for a plan before allowing any changes.</div></div>
+      <div class="bcard"><div class="bc-t">Keep tasks small</div><div class="bc-l">Never &ldquo;build the whole app in one prompt.&rdquo;</div></div>
+      <div class="bcard"><div class="bc-t">Review every change</div><div class="bc-l">Read the file diffs before accepting them.</div></div>
+      <div class="bcard"><div class="bc-t">Commit checkpoints</div><div class="bc-l">Save working states with Git.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="safety-secrets">
+  <h2>Protect secrets, <span class="accent">verify output</span></h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="quad">
+      <div class="bcard warn"><div class="bc-t">Never paste secrets</div><div class="bc-l">No API keys or tokens in prompts.</div></div>
+      <div class="bcard"><div class="bc-t">Use .env + .gitignore</div><div class="bc-l">Keep secrets out of the repo entirely.</div></div>
+      <div class="bcard"><div class="bc-t">Ask for trade-offs</div><div class="bc-l">Make the agent explain its important decisions.</div></div>
+      <div class="bcard good"><div class="bc-t">Run &amp; test it yourself</div><div class="bc-l">Don&rsquo;t trust &ldquo;it works&rdquo; &mdash; confirm it.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide idea" id="golden-rule">
+  <div class="kicker">The golden rule</div>
+  <div class="headline">Don&rsquo;t accept code you <span class="accent">can&rsquo;t explain</span>.</div>
+  <p class="sub">You don&rsquo;t need every advanced detail &mdash; but you should know what it&rsquo;s for, where it lives, what it connects to, and how to check whether it works.</p>
+</section>
+
+<!-- ============================== CLOSING ============================== -->
+<section class="slide idea" id="leverage">
+  <div class="kicker">The key lesson</div>
+  <div class="headline">Not AI replacing the developer &mdash; the developer with <span class="accent">leverage</span>.</div>
+  <p class="sub">Agentic Engineering keeps you in charge of direction, quality, and correctness while the agent does more of the work.</p>
+</section>
+
+<section class="slide" id="recap">
+  <h2>Today: the first layer &mdash; <span class="accent">context</span></h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="numlist">
+      <div class="nrow"><span class="nn">1</span><span class="nt">Start with <b>business problems</b></span></div>
+      <div class="nrow"><span class="nn">2</span><span class="nt">Refine them <b>with AI</b></span></div>
+      <div class="nrow"><span class="nn">3</span><span class="nt">Generate a <b>PRD</b></span></div>
+      <div class="nrow"><span class="nn">4</span><span class="nt">Create an <b>architecture</b> document</span></div>
+      <div class="nrow"><span class="nn">5</span><span class="nt">Define <b>safe ways of working</b> with the agent</span></div>
+    </div>
+    <div class="closing">Next layer: <b>implementation, testing, debugging, code review, deployment, and production readiness</b> &mdash; where the discipline matters even more.</div>
+  </div>
+</section>
+
+<section class="slide ending" id="ending">
+  <div class="eyebrow">Remember</div>
+  <h1>Build faster. Build with <span class="accent">control</span>.</h1>
+  <div class="principles">
+    <div class="principle"><div class="pn">01</div><div class="ph">Coding vs Engineering</div><p>Agentic AI Coding helps us build faster; Agentic Engineering helps us build with control.</p></div>
+    <div class="principle"><div class="pn">02</div><div class="ph">Context is the material</div><p>The better your context, the better the agent can help.</p></div>
+    <div class="principle"><div class="pn">03</div><div class="ph">Review makes it safe</div><p>The stronger your review process, the safer the output becomes.</p></div>
+  </div>
+</section>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  let cur = 0;
+
+  function show(n) {
+    cur = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+    counter.textContent = (cur + 1) + ' / ' + slides.length;
+    progress.style.width = (cur / (slides.length - 1) * 100) + '%';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(slides.length - 1); }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    show(cur + (e.shiftKey ? -1 : 1));
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>

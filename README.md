@@ -8,10 +8,14 @@ A full-stack app where a visitor can **register**, **log in**, manage a **profil
 - **Auth:** JWT stored in an **httpOnly cookie**, passwords hashed with **bcrypt**
 - **Deploy:** Frontend → **Vercel**, Backend → **Render**
 
+An **npm-workspaces monorepo**:
+
 ```
 .
-├── backend/    Express API
-└── frontend/   React app
+├── package.json   workspace root (apps/*, packages/*)
+└── apps/
+    ├── api/   Express API   (@neonauth/api)
+    └── web/   React app     (@neonauth/web)
 ```
 
 ## Documentation
@@ -24,13 +28,17 @@ A full-stack app where a visitor can **register**, **log in**, manage a **profil
 
 ## Local development
 
-### 1. Backend
+Install once at the repo root — npm workspaces installs both apps:
 
 ```bash
-cd backend
-cp .env.example .env       # fill in MONGODB_URI and JWT_SECRET
 npm install
-npm run dev                # http://localhost:5000
+```
+
+### 1. API (`apps/api`)
+
+```bash
+cp apps/api/.env.example apps/api/.env   # fill in MONGODB_URI and JWT_SECRET
+npm run dev:api                          # http://localhost:5000
 ```
 
 `.env` values:
@@ -43,17 +51,15 @@ npm run dev                # http://localhost:5000
 | `PORT`        | `5000`                                               | Render injects its own in production   |
 | `NODE_ENV`    | `development`                                         | `production` enables secure cookies    |
 
-### 2. Frontend
+### 2. Web (`apps/web`)
 
 ```bash
-cd frontend
-cp .env.example .env       # VITE_API_URL=http://localhost:5000
-npm install
-npm run dev                # http://localhost:5173
+cp apps/web/.env.example apps/web/.env   # VITE_API_URL=http://localhost:5000
+npm run dev:web                          # http://localhost:5173
 ```
 
-The frontend talks to the backend with `credentials: "include"` so the auth cookie
-flows on every request; the backend allows that origin via CORS `credentials: true`.
+The web app talks to the API with `credentials: "include"` so the auth cookie
+flows on every request; the API allows that origin via CORS `credentials: true`.
 
 ---
 
@@ -81,22 +87,26 @@ Base path `/api`. All responses are JSON. Auth uses an httpOnly `token` cookie.
 ### MongoDB Atlas
 1. Create a free cluster and a database user.
 2. Network Access → allow `0.0.0.0/0` (or Render's egress IPs).
-3. Copy the SRV connection string into the backend `MONGODB_URI`.
+3. Copy the SRV connection string into the API `MONGODB_URI`.
 
-### Backend → Render (Web Service)
-- **Root directory:** `backend`
+> Both hosts support a monorepo subdirectory as the project root — point each at its
+> `apps/*` folder below. The build runs inside that folder against the package's own
+> `package.json`.
+
+### API → Render (Web Service)
+- **Root directory:** `apps/api`
 - **Build command:** `npm install`
 - **Start command:** `npm start`
 - **Environment variables:** `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL` (the Vercel URL),
   `NODE_ENV=production`. Render provides `PORT` automatically.
 
-### Frontend → Vercel
-- **Root directory:** `frontend`
+### Web → Vercel
+- **Root directory:** `apps/web`
 - **Framework preset:** Vite (build `npm run build`, output `dist`)
-- **Environment variable:** `VITE_API_URL` = the Render backend URL
+- **Environment variable:** `VITE_API_URL` = the Render API URL
 - `vercel.json` adds the SPA rewrite so refreshing `/dashboard` works.
 
-After both are live, set the backend `CLIENT_URL` to the exact Vercel origin and redeploy.
+After both are live, set the API `CLIENT_URL` to the exact Vercel origin and redeploy.
 
 ### ⚠️ Cross-site cookie note
 The frontend (`*.vercel.app`) and backend (`*.onrender.com`) are different domains, so the
