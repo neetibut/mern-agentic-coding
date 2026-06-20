@@ -139,10 +139,9 @@
 
 <!-- ============================== COVER ============================== -->
 <section class="slide cover active" id="cover">
-  <div class="eyebrow">10-Minute Intro &middot; Teaching Session</div>
-  <h1>Agentic Engineering<br>for <span class="accent">MERN Developers</span></h1>
+  <h1>Agentic AI Coding<br>with <span class="accent">The MERN Stack</span></h1>
   <p class="lede">Not just asking AI to write code &mdash; working with an AI coding agent in a disciplined way: clear context, good judgement, review checkpoints, and ownership of the result.</p>
-  <p class="byline">with Neeti</p>
+  <p class="byline"></p>
 </section>
 
 <!-- ============================== GUIDING PRINCIPLE ============================== -->
@@ -282,19 +281,19 @@
   <div class="sep"></div>
   <div class="body">
     <div class="mono">
-mern-agentic-monorepo/<br>
+mern-agentic-project/<br>
+&nbsp;&nbsp;<span class="hi">AGENTS.md</span>&nbsp;&nbsp;<span class="tagline">&larr; how to work here (always loaded)</span><br>
+&nbsp;&nbsp;<span class="hi">CLAUDE.md</span>&nbsp;&nbsp;<span class="tagline">&larr; one line: @AGENTS.md</span><br>
 &nbsp;&nbsp;<span class="dir">apps/</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">web/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">React app</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">api/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">Express API</span><br>
-&nbsp;&nbsp;<span class="dir">packages/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">shared code (when needed)</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">web/</span>&nbsp;&nbsp;<span class="tagline">&larr; React frontend</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">api/</span>&nbsp;&nbsp;<span class="tagline">&larr; Express backend</span><br>
 &nbsp;&nbsp;<span class="hi">docs/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">&larr; the part that matters most early on</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">BUSINESS_PROBLEMS.md</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">PRD.md</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">AGENTIC_ENGINEERING_PLAN.md</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">ARCHITECTURE.md</span><br>
-&nbsp;&nbsp;<span class="hi">AGENTS.md</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">&larr; lean, always-loaded agent context</span><br>
 &nbsp;&nbsp;README.md<br>
-&nbsp;&nbsp;package.json&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">workspace root</span><br>
+&nbsp;&nbsp;package.json<br>
 &nbsp;&nbsp;.gitignore
     </div>
   </div>
@@ -304,7 +303,32 @@ mern-agentic-monorepo/<br>
   <div class="kicker">The key insight</div>
   <div class="headline">The most important folder is <span class="accent">docs/</span> &mdash; not the code.</div>
   <p class="sub">Those documents are how you give the agent context. And context is one of the most important materials we provide: <b>the better the context, the better the agent can help.</b></p>
-  <p class="mini">Keep one lean <code>AGENTS.md</code> at the root as the always-loaded index &mdash; it points the agent to these heavier docs instead of repeating them.</p>
+</section>
+
+<section class="slide" id="ops-manual">
+  <h2>The file the agent reads <span class="accent">every time</span></h2>
+  <p class="subtitle">The <code>docs/</code> are reference you point to. There&rsquo;s one more file the agent loads <b>automatically</b> &mdash; its operating manual.</p>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="duo">
+      <div class="bcard good"><div class="bc-tag">Always loaded</div><div class="bc-t">AGENTS.md</div><div class="bc-l"><b>How to work here</b> &mdash; stack, build &amp; test commands, conventions, and your safety rules. Read every session.</div></div>
+      <div class="bcard"><div class="bc-tag">On demand</div><div class="bc-t">docs/*.md</div><div class="bc-l"><b>What you&rsquo;re building</b> &mdash; the PRD and architecture. Pulled in when the task needs them.</div></div>
+    </div>
+    <div class="closing">Put your safety rules in <code>AGENTS.md</code> and the agent follows them by default &mdash; no need to repeat them each prompt.</div>
+  </div>
+</section>
+
+<section class="slide" id="agents-vs-claude">
+  <h2>AGENTS.md vs <span class="accent">CLAUDE.md</span></h2>
+  <p class="subtitle">Claude Code reads <code>CLAUDE.md</code> &mdash; <b>not</b> <code>AGENTS.md</code>. So keep one source of truth.</p>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="duo">
+      <div class="bcard"><div class="bc-tag">The cross-tool standard</div><div class="bc-t">AGENTS.md</div><div class="bc-l">The open file most agents read (Codex, Cursor, &hellip;). Write your instructions here, once.</div></div>
+      <div class="bcard good"><div class="bc-tag">Claude Code&rsquo;s native file</div><div class="bc-t">CLAUDE.md</div><div class="bc-l">Make it a one-line import &mdash; <code>@AGENTS.md</code> &mdash; or a symlink. Never duplicate the content.</div></div>
+    </div>
+    <div class="closing">One source of truth, portable across tools. <code>/init</code> can scaffold it &mdash; and reads an existing <code>AGENTS.md</code>.</div>
+  </div>
 </section>
 
 <section class="slide idea" id="step1">
@@ -418,7 +442,8 @@ mern-agentic-monorepo/<br>
       <div class="nrow"><span class="nn">2</span><span class="nt">Refine them <b>with AI</b></span></div>
       <div class="nrow"><span class="nn">3</span><span class="nt">Generate a <b>PRD</b></span></div>
       <div class="nrow"><span class="nn">4</span><span class="nt">Create an <b>architecture</b> document</span></div>
-      <div class="nrow"><span class="nn">5</span><span class="nt">Define <b>safe ways of working</b> with the agent</span></div>
+      <div class="nrow"><span class="nn">5</span><span class="nt">Capture how to work in <b>AGENTS.md</b> (read every session)</span></div>
+      <div class="nrow"><span class="nn">6</span><span class="nt">Define <b>safe ways of working</b> with the agent</span></div>
     </div>
     <div class="closing">Next layer: <b>implementation, testing, debugging, code review, deployment, and production readiness</b> &mdash; where the discipline matters even more.</div>
   </div>

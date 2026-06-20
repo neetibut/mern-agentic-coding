@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What we'd build first: the foundation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #fafbfc;
+    --accent: #34d399;
+    --accent-dim: #059669;
+    --text: #334155;
+    --text-dim: #475569;
+    --text-bright: #0f172a;
+    --border: #e2e8f0;
+  }
+
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); overflow: hidden; height: 100vh; width: 100vw; }
+
+  /* ---- SLIDE SHELL ---- */
+  .slide { width: 100vw; height: 100vh; padding: 5vh 5vw; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 0.5vh; }
+
+  /* ---- SHARED TYPE ---- */
+  h2 { font-size: clamp(28px, 3.4vw, 48px); font-weight: 800; line-height: 1.12; letter-spacing: -1.5px; color: var(--text-bright); }
+  .accent { color: var(--accent-dim); }
+  .subtitle { font-size: clamp(16px, 1.6vw, 23px); color: var(--text-dim); font-weight: 400; margin-top: 0.6vh; line-height: 1.5; max-width: 72ch; }
+  .sep { width: 64px; height: 4px; background: var(--accent); border-radius: 2px; margin: 1.6vh 0; }
+
+  /* ---- CONTENT BODY ---- */
+  .body { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; margin-top: 0.4vh; }
+
+  /* ---- FOLDER TREE (bespoke, scoped) ---- */
+  #build-tree .mono { font-family: 'SF Mono', 'Fira Code', monospace; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: clamp(18px, 3vh, 42px) clamp(22px, 3vw, 52px); font-size: clamp(13px, 1.5vw, 21px); line-height: 1.85; color: var(--text); max-width: clamp(520px, 62vw, 860px); margin: 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  #build-tree .mono .dir { color: var(--text-dim); font-weight: 700; }
+  #build-tree .mono .hi { color: var(--accent-dim); font-weight: 800; }
+  #build-tree .mono .tagline { color: var(--accent-dim); font-style: normal; font-family: 'Inter', sans-serif; font-size: 0.7em; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<section class="slide" id="build-tree">
+  <h2>What we&rsquo;d build first: the <span class="accent">foundation</span></h2>
+  <p class="subtitle">The code comes later. This comes first.</p>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="mono">
+mern-agentic-project/<br>
+&nbsp;&nbsp;<span class="hi">AGENTS.md</span>&nbsp;&nbsp;<span class="tagline">&larr; how to work here (always loaded)</span><br>
+&nbsp;&nbsp;<span class="hi">CLAUDE.md</span>&nbsp;&nbsp;<span class="tagline">&larr; one line: @AGENTS.md</span><br>
+&nbsp;&nbsp;<span class="dir">apps/</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">web/</span>&nbsp;&nbsp;<span class="tagline">&larr; React frontend</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">api/</span>&nbsp;&nbsp;<span class="tagline">&larr; Express backend</span><br>
+&nbsp;&nbsp;<span class="hi">docs/</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tagline">&larr; the part that matters most early on</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">BUSINESS_PROBLEMS.md</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">PRD.md</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">AGENTIC_ENGINEERING_PLAN.md</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hi">ARCHITECTURE.md</span><br>
+&nbsp;&nbsp;README.md<br>
+&nbsp;&nbsp;package.json<br>
+&nbsp;&nbsp;.gitignore
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
