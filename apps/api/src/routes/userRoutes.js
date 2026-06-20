@@ -5,6 +5,7 @@ import {
   addAddress,
   updateAddress,
   deleteAddress,
+  setDefaultAddress,
   deleteAccount,
 } from "../controllers/userController.js";
 
@@ -18,6 +19,7 @@ router.delete("/me", deleteAccount);
 
 router.post("/me/addresses", addAddress);
 router.put("/me/addresses/:addressId", updateAddress);
+router.put("/me/addresses/:addressId/default", setDefaultAddress);
 router.delete("/me/addresses/:addressId", deleteAddress);
 
 export default router;

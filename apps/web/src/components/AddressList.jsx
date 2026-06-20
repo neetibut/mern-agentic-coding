@@ -16,7 +16,11 @@ export default function AddressList() {
   const [editingId, setEditingId] = useState(null);
   const [busyId, setBusyId] = useState(null);
 
-  const addresses = user.addresses || [];
+  // Default first, otherwise preserve insertion order. Copy before sorting so
+  // we never mutate the array held in auth context.
+  const addresses = [...(user.addresses || [])].sort(
+    (a, b) => Number(b.isDefault) - Number(a.isDefault)
+  );
 
   async function handleAdd(form) {
     const data = await api.post("/users/me/addresses", form);
@@ -34,6 +38,16 @@ export default function AddressList() {
     setBusyId(id);
     try {
       const data = await api.del(`/users/me/addresses/${id}`);
+      setCurrentUser(data.user);
+    } finally {
+      setBusyId(null);
+    }
+  }
+
+  async function handleSetDefault(id) {
+    setBusyId(id);
+    try {
+      const data = await api.put(`/users/me/addresses/${id}/default`);
       setCurrentUser(data.user);
     } finally {
       setBusyId(null);
@@ -86,12 +100,26 @@ export default function AddressList() {
               <div>
                 <p className="font-display text-sm uppercase tracking-[0.15em] text-cyan">
                   {addr.label || "Address"}
+                  {addr.isDefault && (
+                    <span className="ml-2 align-middle font-mono text-[0.65rem] tracking-[0.2em] text-lime border border-lime/50 rounded-sm px-1.5 py-0.5">
+                      DEFAULT
+                    </span>
+                  )}
                 </p>
                 <p className="font-mono text-sm text-muted mt-1">
                   {formatLine(addr) || "—"}
                 </p>
               </div>
               <div className="flex shrink-0 gap-2">
+                {!addr.isDefault && (
+                  <NeonButton
+                    variant="lime"
+                    disabled={busyId === addr._id}
+                    onClick={() => handleSetDefault(addr._id)}
+                  >
+                    {busyId === addr._id ? "…" : "Make default"}
+                  </NeonButton>
+                )}
                 <NeonButton variant="cyan" onClick={() => setEditingId(addr._id)}>
                   Edit
                 </NeonButton>

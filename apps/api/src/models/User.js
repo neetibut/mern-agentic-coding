@@ -9,6 +9,7 @@ const addressSchema = new mongoose.Schema(
     state: { type: String, trim: true, default: "" },
     zip: { type: String, trim: true, default: "" },
     country: { type: String, trim: true, default: "" },
+    isDefault: { type: Boolean, default: false },
   },
   { _id: true }
 );
