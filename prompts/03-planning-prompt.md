@@ -17,8 +17,10 @@ way that breaks current behavior. We expect it to name files like `apps/api/src/
 
 ## Step 2 — Plan (propose, wait for confirmation)
 
-> Propose an implementation plan for the Default Address feature. List the files you expect to
-> change and the data-model change. State how you will enforce the **exactly-one-default** invariant
+> Propose an implementation plan for the Default Address feature specified in
+> [`02-spec.md`](02-spec.md) (full detail in [`../docs/demo/feature-brief.md`](../docs/demo/feature-brief.md)).
+> Read those first. List the files you expect to change and the data-model change. State how you will
+> enforce the **exactly-one-default** invariant
 > on the server. Call out the edge cases — the first address, switching the default, deleting the
 > default, and deleting the last address. Identify any risk of touching unrelated behavior
 > (profile, auth). **Wait for my confirmation before writing code.**

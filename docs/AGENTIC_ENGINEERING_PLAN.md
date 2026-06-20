@@ -48,7 +48,56 @@ points the agent at the heavier docs instead of repeating them.
 
 ---
 
-## 3. Safety rules — keep control of the work
+## 3. Context architecture — the files that carry it
+
+The goal is a **lean, always-loaded context layer** plus **on-demand "why" knowledge** — not one
+giant context file. Every token in an always-loaded file is paid on *every* turn, and bloat causes
+context rot. This repo (**NEONAUTH**) implements the layout below.
+
+```
+/package.json              ← workspace root: workspaces ["apps/*", "packages/*"]
+/AGENTS.md                 ← root: stack, workspace map, global commands & conventions (always loaded)
+/CLAUDE.md                 ← Claude Code entry point (one-line import of AGENTS.md)
+/README.md                 ← human onboarding (not for agents)
+/CONTRIBUTING.md           ← (optional) commit / PR / branch conventions
+/docs/
+   BUSINESS_PROBLEMS.md    ← the problems the product solves (human-authored, first)
+   PRD.md                  ← product requirements (what/why)
+   AGENTIC_ENGINEERING_PLAN.md  ← how the team works with AI agents (this file)
+   architecture.md         ← data flow, auth, deployment topology
+   adr/0001-use-mongoose.md   ← architecture decision records (one per decision)
+/apps/
+   web/  AGENTS.md         ← React conventions (components, state, data-fetching)
+   api/  AGENTS.md         ← Express/Mongoose conventions (routes, models, error shape)
+/packages/
+   shared/  AGENTS.md      ← (when needed) shared types / zod schemas
+```
+
+A per-package `AGENTS.md` is optional until a package's conventions diverge enough to warrant its
+own file; until then the root `AGENTS.md` covers both. `CONTRIBUTING.md` and `packages/*` are
+recommended-when-needed, not required to start.
+
+| File | Role | Keep it… |
+|---|---|---|
+| **Root `AGENTS.md`** | "Project README for agents" — always loaded | **Tight.** Stack + versions, workspace map, package manager + canonical `install / dev / build` commands, global conventions, and what *not* to touch (generated files, `.env`) |
+| **Per-package `AGENTS.md`** | Scoped context — agents read the *nearest* one | Only what's specific to that package: `api/` documents route→controller→model, the Mongoose schema style, the JSON error envelope; `web/` documents component structure, state, and how to call the API |
+| **`PRD.md`** | Product requirements — what/why, for whom | Authored by the human first; the agent helps sharpen and expand it |
+| **`architecture.md` + `adr/*`** | Durable "why" knowledge | Referenced when needed, not loaded every turn |
+
+**Two principles drive this:**
+
+1. **Always-loaded must stay lean.** Put stack + commands + conventions in `AGENTS.md`; push
+   everything else into `docs/` and reference it on demand.
+2. **Nest context in a monorepo.** A root `AGENTS.md` plus a small one per workspace means an agent
+   editing `apps/api` gets backend conventions without dragging in the React rules, and vice versa.
+   This is the single biggest win for monorepos specifically.
+
+So "context is the material" and "keep always-loaded context lean" are not in tension: the rich
+context lives in `docs/`; `AGENTS.md` is the thin, ever-present index that routes the agent to it.
+
+---
+
+## 4. Safety rules — keep control of the work
 
 1. **Plan before code.** Ask the agent for a plan and review it *before* allowing file changes.
 2. **Keep tasks small.** Never "build the whole app in one prompt." One logical change at a time.
@@ -58,7 +107,7 @@ points the agent at the heavier docs instead of repeating them.
 
 ---
 
-## 4. Safety rules — protect secrets, verify output
+## 5. Safety rules — protect secrets, verify output
 
 5. **Never paste secrets.** No API keys, tokens, connection strings, or `.env` contents in prompts,
    code, logs, or output. In this repo that means **`apps/api/.env` is off-limits** — it is
@@ -73,7 +122,7 @@ points the agent at the heavier docs instead of repeating them.
 
 ---
 
-## 5. The golden rule
+## 6. The golden rule
 
 **Don't accept code you can't explain.** You don't need every advanced detail, but for any change
 you accept you should know: what it's for, where it lives, what it connects to, and how to check
@@ -81,7 +130,7 @@ whether it works.
 
 ---
 
-## 6. What this looks like per change (checklist)
+## 7. What this looks like per change (checklist)
 
 - [ ] The task is small and stated clearly (problem, not just "fix it").
 - [ ] The agent has the context it needs (pointed at the relevant docs / files).
