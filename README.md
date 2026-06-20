@@ -41,7 +41,7 @@ npm install
 
 ```bash
 cp apps/api/.env.example apps/api/.env   # fill in MONGODB_URI and JWT_SECRET
-npm run dev:api                          # http://localhost:5000
+npm run dev:api                          # http://localhost:3000
 ```
 
 `.env` values:
@@ -57,7 +57,7 @@ npm run dev:api                          # http://localhost:5000
 ### 2. Web (`apps/web`)
 
 ```bash
-cp apps/web/.env.example apps/web/.env   # VITE_API_URL=http://localhost:5000
+cp apps/web/.env.example apps/web/.env   # VITE_API_URL=http://localhost:3000
 npm run dev:web                          # http://localhost:5173
 ```
 
