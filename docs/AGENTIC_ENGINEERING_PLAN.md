@@ -10,7 +10,7 @@ human ownership of the result.
 
 Related docs: [`AGENTS.md`](../AGENTS.md) (how to work in the code) ·
 [`BUSINESS_PROBLEMS.md`](BUSINESS_PROBLEMS.md) · [`PRD.md`](PRD.md) ·
-[`architecture.md`](architecture.md).
+[`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 ---
 
@@ -38,7 +38,7 @@ We prepare context **before** asking for implementation. The order matters:
    find vague problems, and sharpen the statements — before any PRD.
 3. **Generate the PRD.** With the problems clear, draft [`PRD.md`](PRD.md): overview, target users,
    goals/non-goals, user stories, MVP scope & success criteria, assumptions & open questions.
-4. **Document the architecture.** Then [`architecture.md`](architecture.md): frontend &
+4. **Document the architecture.** Then [`ARCHITECTURE.md`](ARCHITECTURE.md): frontend &
    backend structure, data model, API structure, data flow, key decisions, risks & trade-offs.
 5. **Agree on how we work with the agent** — this document.
 
@@ -64,7 +64,7 @@ context rot. This repo (**NEONAUTH**) implements the layout below.
    BUSINESS_PROBLEMS.md    ← the problems the product solves (human-authored, first)
    PRD.md                  ← product requirements (what/why)
    AGENTIC_ENGINEERING_PLAN.md  ← how the team works with AI agents (this file)
-   architecture.md         ← data flow, auth, deployment topology
+   ARCHITECTURE.md         ← data flow, auth, deployment topology
    adr/0001-use-mongoose.md   ← architecture decision records (one per decision)
 /apps/
    web/  AGENTS.md         ← React conventions (components, state, data-fetching)
@@ -82,7 +82,7 @@ recommended-when-needed, not required to start.
 | **Root `AGENTS.md`** | "Project README for agents" — always loaded | **Tight.** Stack + versions, workspace map, package manager + canonical `install / dev / build` commands, global conventions, and what *not* to touch (generated files, `.env`) |
 | **Per-package `AGENTS.md`** | Scoped context — agents read the *nearest* one | Only what's specific to that package: `api/` documents route→controller→model, the Mongoose schema style, the JSON error envelope; `web/` documents component structure, state, and how to call the API |
 | **`PRD.md`** | Product requirements — what/why, for whom | Authored by the human first; the agent helps sharpen and expand it |
-| **`architecture.md` + `adr/*`** | Durable "why" knowledge | Referenced when needed, not loaded every turn |
+| **`ARCHITECTURE.md` + `adr/*`** | Durable "why" knowledge | Referenced when needed, not loaded every turn |
 
 **Two principles drive this:**
 
