@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Getting Started with Agentic Engineering for MERN Developers</title>
+<title>Agentic AI Coding on a Real MERN Codebase — NEONAUTH</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -132,6 +132,7 @@
   #ending .principle p { font-size: clamp(13px, 1.25vw, 17px); color: var(--text-dim); font-weight: 500; line-height: 1.45; margin-top: 0.4vh; }
 </style>
 </head>
+
 <body>
 
 <div class="progress" id="progress"></div>
@@ -139,112 +140,158 @@
 
 <!-- ============================== COVER ============================== -->
 <section class="slide cover active" id="cover">
-  <h1>Agentic AI Coding<br>with <span class="accent">The MERN Stack</span></h1>
-  <p class="lede">Not just asking AI to write code &mdash; working with an AI coding agent on a real <b>MERN</b> codebase in a disciplined way: clear context, good judgement, review checkpoints, and ownership of the result.</p>
-  <p class="byline"></p>
+  <h1>Agentic AI Coding<br>on a <span class="accent">MERN Codebase</span></h1>
+  <p class="lede">Not asking an AI to write code &mdash; working with a coding agent the way an engineer would: clear context, a reviewed plan, narrow changes, and verification you can trust.</p>
+  <p class="byline">Live: adding one small feature to an app that already works.</p>
 </section>
 
 <!-- ============================== GUIDING PRINCIPLE ============================== -->
 <section class="slide idea" id="principle">
   <div class="kicker">The idea that guides everything</div>
   <div class="headline">The agent helps us move faster &mdash; <span class="accent">we stay responsible</span>.</div>
-  <p class="sub">The AI can accelerate the work, but the developer still owns the <b>direction, quality, and correctness</b> of the software.</p>
+  <p class="sub">It can inspect, plan, edit, and run commands &mdash; but the developer still owns the <b>direction, quality, and correctness</b> of the software.</p>
 </section>
 
 <!-- ============================== ACT 1 — WHAT IS AGENTIC CODING ============================== -->
 <section class="slide divider" id="d-coding">
-  <div class="part">First</div>
+  <div class="part">The concept</div>
   <h1>What is<br>Agentic AI Coding?</h1>
-  <p class="d-sub">Powerful &mdash; and exactly where the risk begins.</p>
+  <p class="d-sub">An agent that works inside your codebase &mdash; and why that raises the stakes.</p>
 </section>
 
 <section class="slide idea" id="coding-what">
   <div class="kicker">The definition</div>
-  <div class="headline">Using an AI agent to <span class="accent">help build software</span>.</div>
-  <p class="sub">Tools like Claude Code, Cursor, or Codex work inside the codebase &mdash; reading files, planning, editing code, running commands, debugging, and writing docs.</p>
+  <div class="headline">Using an AI agent to <span class="accent">work inside the codebase</span>.</div>
+  <p class="sub">Tools like Claude Code can <b>inspect files, plan, edit code, run commands, and debug</b> &mdash; not just autocomplete. The judgment about what&rsquo;s correct stays with you.</p>
 </section>
 
-<section class="slide" id="coding-guesses">
-  <h2>&ldquo;Build me a full-stack app&rdquo; makes the AI <span class="accent">guess</span></h2>
-  <p class="subtitle">One vague prompt, and the agent has to invent everything you didn&rsquo;t say &mdash; five things it&rsquo;s left to guess:</p>
-  <div class="sep"></div>
-  <div class="body">
-    <div class="maplist">
-      <div class="mrow"><span class="mn">1</span><span class="ml">The users</span></div>
-      <div class="mrow"><span class="mn">2</span><span class="ml">The product scope</span></div>
-      <div class="mrow"><span class="mn">3</span><span class="ml">The architecture</span></div>
-      <div class="mrow"><span class="mn">4</span><span class="ml">The database design</span></div>
-      <div class="mrow"><span class="mn">5</span><span class="ml">What &ldquo;done&rdquo; means</span></div>
-    </div>
-  </div>
+<section class="slide idea" id="why-discipline">
+  <div class="kicker">Why discipline</div>
+  <div class="headline">An unclear task gives you <span class="accent">unclear code</span>.</div>
+  <p class="sub">On a codebase that already works, a vague prompt isn&rsquo;t just low-quality &mdash; it risks <b>breaking what already works</b>. The fix isn&rsquo;t a longer prompt; it&rsquo;s clearer engineering.</p>
 </section>
 
-<section class="slide idea" id="coding-fragile">
-  <div class="headline">Impressive on the surface. <span class="accent">Fragile</span> underneath.</div>
-  <p class="sub">The result can look great yet be hard to understand, hard to debug, and hard to maintain. That gap is what <b>Agentic Engineering</b> closes.</p>
+<!-- ============================== ACT 2 — MEET NEONAUTH ============================== -->
+<section class="slide divider" id="d-neonauth">
+  <div class="part">The codebase</div>
+  <h1>A real app,<br>already working.</h1>
+  <p class="d-sub">We add one small feature &mdash; without breaking what&rsquo;s there.</p>
 </section>
 
-<!-- ============================== ACT 3 — CODING VS ENGINEERING ============================== -->
-<section class="slide divider" id="d-vs">
-  <div class="part">Second</div>
-  <h1>Coding vs<br>Engineering</h1>
-  <p class="d-sub">The distinction to remember &mdash; one is a tool, the other is a discipline.</p>
-</section>
-
-<section class="slide" id="vs-define">
-  <h2>Two different <span class="accent">things</span></h2>
+<section class="slide" id="neonauth">
+  <h2>Meet <span class="accent">NEONAUTH</span></h2>
+  <p class="subtitle">A real MERN full-stack app &mdash; not a toy. Users register, log in, and manage a profile with saved addresses.</p>
   <div class="sep"></div>
   <div class="body">
     <div class="duo">
-      <div class="bcard"><div class="bc-tag">The activity</div><div class="bc-t">Agentic AI Coding</div><div class="bc-l">Using an AI agent to help build software.</div></div>
-      <div class="bcard good"><div class="bc-tag">The discipline</div><div class="bc-t">Agentic Engineering</div><div class="bc-l">The process that keeps that work <b>clear, reviewable, and maintainable</b>.</div></div>
+      <div class="bcard">
+        <div class="bc-tag">The app</div>
+        <div class="bc-t">MERN auth + profile</div>
+        <div class="bc-l">An <b>Express + Mongoose + JWT</b> API and a <b>React + Vite</b> SPA, in an npm-workspaces monorepo &mdash; with existing patterns the agent must respect.</div>
+      </div>
+      <div class="bcard good">
+        <div class="bc-tag">Our job</div>
+        <div class="bc-t">Add a Default Address</div>
+        <div class="bc-l">One small feature, within the existing patterns &mdash; without breaking <b>add, edit, delete, profile, or login</b>.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="vs-working">
-  <h2>Engineering is a <span class="accent">way of working</span></h2>
-  <p class="subtitle">Not a single prompt, not a specific tool.</p>
+<!-- ============================== ACT 3 — VAGUE → SPEC ============================== -->
+<section class="slide divider" id="d-spec">
+  <div class="part">The task</div>
+  <h1>From a vague ask<br>to a clear spec.</h1>
+  <p class="d-sub">The same feature, asked two ways &mdash; only one is safe to build.</p>
+</section>
+
+<section class="slide" id="bad-request">
+  <h2>Start with the <span class="accent">vague version</span></h2>
+  <p class="subtitle">The prompt: <b>&ldquo;Add a way for users to pick a main address.&rdquo;</b> Reasonable to a human &mdash; but here&rsquo;s what it leaves the agent to guess.</p>
   <div class="sep"></div>
   <div class="body">
     <div class="maplist">
-      <div class="mrow"><span class="mn">1</span><span class="ml">Define the problem clearly</span></div>
-      <div class="mrow"><span class="mn">2</span><span class="ml">Give the agent useful context</span></div>
-      <div class="mrow"><span class="mn">3</span><span class="ml">Break the work into small tasks</span></div>
-      <div class="mrow"><span class="mn">4</span><span class="ml">Ask for a plan before code changes</span></div>
-      <div class="mrow"><span class="mn">5</span><span class="ml">Review the output and test the behaviour</span></div>
-      <div class="mrow"><span class="mn">6</span><span class="ml">Stay responsible for the final result</span></div>
+      <div class="mrow"><span class="mn">1</span><span class="ml">What does &ldquo;main&rdquo; mean &mdash; a flag, a field, an ordering?</span></div>
+      <div class="mrow"><span class="mn">2</span><span class="ml">Can there be more than one at a time?</span></div>
+      <div class="mrow"><span class="mn">3</span><span class="ml">What happens to the old main when a new one is picked?</span></div>
+      <div class="mrow"><span class="mn">4</span><span class="ml">What about the very first address?</span></div>
+      <div class="mrow"><span class="mn">5</span><span class="ml">What if the user deletes the one that&rsquo;s main?</span></div>
+      <div class="mrow"><span class="mn">6</span><span class="ml">Must existing address behaviour keep working?</span></div>
     </div>
   </div>
 </section>
 
-<section class="slide" id="vs-vibe">
-  <h2>The useful contrast: <span class="accent">Vibe Coding</span></h2>
+<section class="slide" id="to-spec">
+  <h2>Turn it into a <span class="accent">spec</span></h2>
   <div class="sep"></div>
   <div class="body">
     <div class="contrast">
-      <div class="cstate old"><div class="cl">Vibe coding</div><div class="cv">No map</div><div class="cd">A vague instruction &mdash; and you accept whatever it produces.</div></div>
+      <div class="cstate old"><div class="cl">Vague request</div><div class="cv">&ldquo;Pick a main address&rdquo;</div><div class="cd">The agent invents the behaviour, the data model, and the edge cases.</div></div>
       <div class="carrow">&rarr;</div>
-      <div class="cstate new"><div class="cl">Agentic Engineering</div><div class="cv">Map + checkpoints</div><div class="cd">The problem, the users, the MVP, the constraints, the architecture &mdash; and a plan before any file changes.</div></div>
+      <div class="cstate new"><div class="cl">Engineering-ready spec</div><div class="cv">Default Address</div><div class="cd">Behaviour, constraints, acceptance criteria &mdash; and the rule that must always hold.</div></div>
     </div>
-    <div class="closing">Vibe coding hands over the wheel. <b>Don&rsquo;t let the AI drive without a map</b> &mdash; give it a map, checkpoints, and engineering standards.</div>
+    <div class="closing">A good spec isn&rsquo;t <b>longer</b> &mdash; it makes the engineering thinking explicit: behaviour, constraints, and what must <b>not</b> change.</div>
   </div>
 </section>
 
-<!-- ============================== ACT 4 — PREPARE CONTEXT ============================== -->
-<section class="slide divider" id="d-context">
-  <div class="part">The first layer</div>
-  <h1>Prepare Context<br>Before Coding</h1>
-  <p class="d-sub">Before a single line of the app &mdash; set the agent up to help well.</p>
+<section class="slide" id="spec-explicit">
+  <h2>What the spec <span class="accent">makes explicit</span></h2>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="trio">
+      <div class="bcard">
+        <div class="bc-tag">Behaviour</div>
+        <div class="bc-t">What it does</div>
+        <div class="bc-l">First address auto-defaults &middot; marking a new default unsets the old &middot; deleting the default promotes another &middot; the default is badged and listed first.</div>
+      </div>
+      <div class="bcard">
+        <div class="bc-tag">Constraints</div>
+        <div class="bc-t">What&rsquo;s off-limits</div>
+        <div class="bc-l">No new auth or roles &middot; no external services or dependencies &middot; stay within model &rarr; controller &rarr; routes and the existing Neon* components.</div>
+      </div>
+      <div class="bcard good">
+        <div class="bc-tag">Acceptance</div>
+        <div class="bc-t">How we know it&rsquo;s done</div>
+        <div class="bc-l">Exactly one default whenever there&rsquo;s &ge;1 address &mdash; verified in the browser <b>and</b> by calling the API directly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide idea" id="invariant">
+  <div class="kicker">The heart of the feature</div>
+  <div class="headline">Exactly <span class="accent">one</span> default &mdash; enforced on the server.</div>
+  <p class="sub">At most one default, and exactly one whenever there&rsquo;s at least one address. The rule lives in the <b>controller</b>, not just the UI &mdash; a client could call the API directly.</p>
+</section>
+
+<section class="slide" id="edge-cases">
+  <h2>The <span class="accent">edge cases</span> the plan must handle</h2>
+  <p class="subtitle">The invariant has to survive every path, not just the happy one.</p>
+  <div class="sep"></div>
+  <div class="body">
+    <div class="maplist">
+      <div class="mrow"><span class="mn">1</span><span class="ml">The <b>first</b> address added</span><span class="mo">auto-default</span></div>
+      <div class="mrow"><span class="mn">2</span><span class="ml"><b>Switching</b> default between two &mdash; the old one clears</span><span class="mo">exactly one</span></div>
+      <div class="mrow"><span class="mn">3</span><span class="ml"><b>Deleting</b> the current default</span><span class="mo">promote another</span></div>
+      <div class="mrow"><span class="mn">4</span><span class="ml">Deleting the <b>last</b> address</span><span class="mo">zero, no error</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== ACT 4 — THE WORKFLOW ============================== -->
+<section class="slide divider" id="d-workflow">
+  <div class="part">The workflow</div>
+  <h1>Now: with<br>discipline.</h1>
+  <p class="d-sub">Context, plan, implement, verify, review &mdash; the agent proposes, the human approves.</p>
 </section>
 
 <section class="slide" id="build-tree">
-  <h2>What we&rsquo;d build first: the <span class="accent">foundation</span></h2>
-  <p class="subtitle">The code comes later. This comes first.</p>
+  <h2><span class="accent">Context</span> first &mdash; the foundation the agent reads</h2>
+  <p class="subtitle">The code comes later; this comes first. Context is the material we give the agent &mdash; and the most important folder is <b>docs/</b>, not the code.</p>
   <div class="sep"></div>
   <div class="body">
     <div class="mono">
-mern-agentic-project/<br>
+mern-agentic-coding/<br>
 &nbsp;&nbsp;<span class="hi">AGENTS.md</span>&nbsp;&nbsp;<span class="tagline">&larr; how to work here (always loaded)</span><br>
 &nbsp;&nbsp;<span class="hi">CLAUDE.md</span>&nbsp;&nbsp;<span class="tagline">&larr; one line: @AGENTS.md</span><br>
 &nbsp;&nbsp;<span class="dir">apps/</span><br>
@@ -259,115 +306,54 @@ mern-agentic-project/<br>
 &nbsp;&nbsp;package.json<br>
 &nbsp;&nbsp;.gitignore
     </div>
-    <div class="closing">The most important folder is <b>docs/</b>, not the code &mdash; context is the material we give the agent, and the better the context, the better it can help.</div>
   </div>
 </section>
 
-<section class="slide" id="ops-manual">
-  <h2>The file the agent reads <span class="accent">every time</span></h2>
-  <p class="subtitle">The <code>docs/</code> are reference you point to. There&rsquo;s one more file the agent loads <b>automatically</b> &mdash; its operating manual.</p>
-  <div class="sep"></div>
-  <div class="body">
-    <div class="duo">
-      <div class="bcard good"><div class="bc-tag">Always loaded</div><div class="bc-t">AGENTS.md</div><div class="bc-l"><b>How to work here</b> &mdash; stack, build &amp; test commands, conventions, and your safety rules. Read every session.</div></div>
-      <div class="bcard"><div class="bc-tag">On demand</div><div class="bc-t">docs/*.md</div><div class="bc-l"><b>What you&rsquo;re building</b> &mdash; the PRD and architecture. Pulled in when the task needs them.</div></div>
-    </div>
-    <div class="closing">Put your safety rules in <code>AGENTS.md</code> and the agent follows them by default. Claude Code reads <code>CLAUDE.md</code>, <b>not</b> <code>AGENTS.md</code> &mdash; so make it a one-line <code>@AGENTS.md</code> import: <b>one source of truth</b>, portable across tools.</div>
-  </div>
-</section>
-
-<section class="slide" id="steps">
-  <h2>Three steps to <span class="accent">good context</span></h2>
-  <p class="subtitle">Good AI-assisted development starts with clearer thinking, not code &mdash; the human sets the initial direction.</p>
+<section class="slide" id="plan-review">
+  <h2>Ask for a <span class="accent">plan</span> &mdash; then review it</h2>
+  <p class="subtitle">The agent proposes; the human reviews before any code changes. What I&rsquo;m checking:</p>
   <div class="sep"></div>
   <div class="body">
     <div class="maplist">
-      <div class="mrow"><span class="mn">1</span><span class="ml">Start with <b>business problems</b> &mdash; write <code>BUSINESS_PROBLEMS.md</code> yourself first. Not perfect, just clear enough to review.</span></div>
-      <div class="mrow"><span class="mn">2</span><span class="ml">Use AI to <b>challenge your thinking</b> &mdash; a thinking partner, not a code generator. Sharpen the problems. <b>No PRD yet.</b></span></div>
-      <div class="mrow"><span class="mn">3</span><span class="ml">Now generate the <b>PRD, then the architecture</b> &mdash; with the problems clearer, let the agent draft them.</span></div>
+      <div class="mrow"><span class="mn">1</span><span class="ml">Is the <b>data-model change minimal</b> &mdash; ideally one boolean?</span><span class="mo">minimal</span></div>
+      <div class="mrow"><span class="mn">2</span><span class="ml">Is the invariant enforced <b>server-side</b>, not just the UI?</span><span class="mo">correctness</span></div>
+      <div class="mrow"><span class="mn">3</span><span class="ml">Are <b>all four edge cases</b> handled?</span><span class="mo">completeness</span></div>
+      <div class="mrow"><span class="mn">4</span><span class="ml">Does it touch anything it <b>shouldn&rsquo;t</b> &mdash; auth or profile?</span><span class="mo">scope</span></div>
     </div>
+    <div class="closing">Only when the plan passes these do I <b>approve the edit</b>.</div>
   </div>
 </section>
 
-<section class="slide" id="prd-arch">
-  <h2>Then the <span class="accent">PRD</span> and the <span class="accent">architecture</span></h2>
-  <p class="subtitle">With the problems clear, the agent drafts what to build &mdash; and how it fits together.</p>
+<section class="slide" id="verify">
+  <h2>Implement narrowly &mdash; then <span class="accent">verify</span></h2>
+  <p class="subtitle">Don&rsquo;t trust &ldquo;it works.&rdquo; Walk the behaviour in the browser, then check the rule directly.</p>
   <div class="sep"></div>
   <div class="body">
-    <div class="duo">
-      <div class="bcard">
-        <div class="bc-tag">Product Requirements</div>
-        <div class="bc-t">What a PRD captures</div>
-        <div class="bc-l">Product overview &middot; target users &amp; their problems &middot; goals &amp; non-goals &middot; user stories &middot; MVP scope &amp; success criteria &middot; assumptions &amp; open questions.</div>
-      </div>
-      <div class="bcard good">
-        <div class="bc-tag">Architecture</div>
-        <div class="bc-t">What the architecture explains</div>
-        <div class="bc-l">Frontend &amp; backend structure &middot; database design &middot; API structure &middot; data flow &middot; key technical decisions &middot; risks &amp; trade-offs.</div>
-      </div>
+    <div class="numlist">
+      <div class="nrow"><span class="nn">1</span><span class="nt">Add the first address &mdash; is it <b>automatically the default</b>?</span></div>
+      <div class="nrow"><span class="nn">2</span><span class="nt">Add a second &mdash; does the first <b>stay</b> default? Make the second default &mdash; does <b>exactly one</b> flip over?</span></div>
+      <div class="nrow"><span class="nn">3</span><span class="nt">Refresh &mdash; did it <b>persist</b> to the database?</span></div>
+      <div class="nrow"><span class="nn">4</span><span class="nt">Delete the default &mdash; is another <b>promoted</b>? Delete the last &mdash; no default, no errors?</span></div>
+      <div class="nrow"><span class="nn">5</span><span class="nt">Call the API <b>directly</b> &mdash; still exactly one default, without the UI&rsquo;s help.</span></div>
     </div>
+    <div class="closing">The check most people skip is the last one &mdash; the invariant holds <b>even when the UI isn&rsquo;t involved</b>.</div>
   </div>
-</section>
-
-<section class="slide idea" id="review">
-  <div class="kicker">Review &mdash; don&rsquo;t rubber-stamp</div>
-  <div class="headline">The best beginner architecture is the one you can <span class="accent">explain</span>.</div>
-  <p class="sub">If the MVP is too big, shrink it. If the design is too complex, simplify it. If the agent adds tools you don&rsquo;t need, challenge them.</p>
-</section>
-
-<!-- ============================== ACT 5 — SAFETY RULES ============================== -->
-<section class="slide divider" id="d-safety">
-  <div class="part">Before any code</div>
-  <h1>Safety Rules</h1>
-  <p class="d-sub">Guardrails that keep you in control of the agent.</p>
-</section>
-
-<section class="slide" id="safety-process">
-  <h2>Keep control of the <span class="accent">work</span></h2>
-  <div class="sep"></div>
-  <div class="body">
-    <div class="quad">
-      <div class="bcard"><div class="bc-t">Plan before code</div><div class="bc-l">Ask for a plan before allowing any changes.</div></div>
-      <div class="bcard"><div class="bc-t">Keep tasks small</div><div class="bc-l">Never &ldquo;build the whole app in one prompt.&rdquo;</div></div>
-      <div class="bcard"><div class="bc-t">Review every change</div><div class="bc-l">Read the file diffs before accepting them.</div></div>
-      <div class="bcard"><div class="bc-t">Commit checkpoints</div><div class="bc-l">Save working states with Git.</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="slide" id="safety-secrets">
-  <h2>Protect secrets, <span class="accent">verify output</span></h2>
-  <div class="sep"></div>
-  <div class="body">
-    <div class="quad">
-      <div class="bcard warn"><div class="bc-t">Never paste secrets</div><div class="bc-l">No API keys or tokens in prompts.</div></div>
-      <div class="bcard"><div class="bc-t">Use .env + .gitignore</div><div class="bc-l">Keep secrets out of the repo entirely.</div></div>
-      <div class="bcard"><div class="bc-t">Ask for trade-offs</div><div class="bc-l">Make the agent explain its important decisions.</div></div>
-      <div class="bcard good"><div class="bc-t">Run &amp; test it yourself</div><div class="bc-l">Don&rsquo;t trust &ldquo;it works&rdquo; &mdash; confirm it.</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="slide idea" id="golden-rule">
-  <div class="kicker">The golden rule</div>
-  <div class="headline">Don&rsquo;t accept code you <span class="accent">can&rsquo;t explain</span>.</div>
-  <p class="sub">You don&rsquo;t need every advanced detail &mdash; but you should know what it&rsquo;s for, where it lives, what it connects to, and how to check whether it works.</p>
 </section>
 
 <!-- ============================== CLOSING ============================== -->
 <section class="slide" id="recap">
-  <h2>Today: the first layer &mdash; <span class="accent">context</span></h2>
+  <h2>The reusable <span class="accent">workflow</span></h2>
+  <p class="subtitle">The same loop works for any change, on any real codebase.</p>
   <div class="sep"></div>
   <div class="body">
     <div class="numlist">
-      <div class="nrow"><span class="nn">1</span><span class="nt">Start with <b>business problems</b></span></div>
-      <div class="nrow"><span class="nn">2</span><span class="nt">Refine them <b>with AI</b></span></div>
-      <div class="nrow"><span class="nn">3</span><span class="nt">Generate a <b>PRD</b></span></div>
-      <div class="nrow"><span class="nn">4</span><span class="nt">Create an <b>architecture</b> document</span></div>
-      <div class="nrow"><span class="nn">5</span><span class="nt">Capture how to work in <b>AGENTS.md</b> (read every session)</span></div>
-      <div class="nrow"><span class="nn">6</span><span class="nt">Define <b>safe ways of working</b> with the agent</span></div>
+      <div class="nrow"><span class="nn">1</span><span class="nt"><b>Context</b> &mdash; have the agent inspect before it edits.</span></div>
+      <div class="nrow"><span class="nn">2</span><span class="nt"><b>Plan</b> &mdash; review scope, data model, and edge cases before approving.</span></div>
+      <div class="nrow"><span class="nn">3</span><span class="nt"><b>Implement</b> &mdash; narrowly, one logical change.</span></div>
+      <div class="nrow"><span class="nn">4</span><span class="nt"><b>Verify</b> &mdash; behaviour in the browser, and the invariant directly.</span></div>
+      <div class="nrow"><span class="nn">5</span><span class="nt"><b>Review</b> &mdash; you stay responsible for correctness.</span></div>
     </div>
-    <div class="closing">Next layer: <b>implementation, testing, debugging, code review, deployment, and production readiness</b> &mdash; where the discipline matters even more.</div>
+    <div class="closing">Not prompting harder &mdash; <b>engineering more clearly</b>.</div>
   </div>
 </section>
 
@@ -375,9 +361,9 @@ mern-agentic-project/<br>
   <div class="eyebrow">Remember</div>
   <h1>Build faster. Build with <span class="accent">control</span>.</h1>
   <div class="principles">
-    <div class="principle"><div class="pn">01</div><div class="ph">Coding vs Engineering</div><p>Agentic AI Coding helps us build faster; Agentic Engineering helps us build with control.</p></div>
-    <div class="principle"><div class="pn">02</div><div class="ph">Context is the material</div><p>The better your context, the better the agent can help.</p></div>
-    <div class="principle"><div class="pn">03</div><div class="ph">Review makes it safe</div><p>The stronger your review process, the safer the output becomes.</p></div>
+    <div class="principle"><div class="pn">01</div><div class="ph">Spec over prompt</div><p>Make the engineering thinking explicit &mdash; behaviour, constraints, and what must not change.</p></div>
+    <div class="principle"><div class="pn">02</div><div class="ph">Plan before code</div><p>Review scope, data model, and edge cases before you approve a single edit.</p></div>
+    <div class="principle"><div class="pn">03</div><div class="ph">Verify the invariant</div><p>Confirm the rule holds even when the API is called directly &mdash; not just in the UI.</p></div>
   </div>
 </section>
 
