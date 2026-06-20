@@ -16,7 +16,7 @@ The root `package.json` declares the workspaces (`apps/*`, `packages/*`) and a s
 From the repo root (preferred — uses the workspace scripts):
 
 - `npm install` — install everything (both workspaces)
-- `npm run dev:api` — nodemon, http://localhost:5000
+- `npm run dev:api` — nodemon, http://localhost:3000
 - `npm run dev:web` — Vite, http://localhost:5173
 - `npm run build:web` — build the SPA to `apps/web/dist/`
 - `npm run start:api` — production API (`node server.js`)

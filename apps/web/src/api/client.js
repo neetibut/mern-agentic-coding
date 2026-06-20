@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 // Thin Fetch wrapper: always sends the auth cookie, sends/parses JSON, and
 // throws an Error carrying the server's message on a non-2xx response.
