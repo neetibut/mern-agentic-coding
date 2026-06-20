@@ -1,7 +1,7 @@
 # PRD — NEONAUTH
 
 **Status:** Reflects the app as currently built (reverse-engineered from the codebase).
-**Related docs:** [`README.md`](README.md) (run/use/deploy), [`AGENTS.md`](AGENTS.md) (working in the code).
+**Related docs:** [`README.md`](../README.md) (run/use/deploy), [`AGENTS.md`](../AGENTS.md) (working in the code).
 
 > Note: this PRD was written after the initial build to capture scope and intent. "Future work"
 > items are not implemented — treat anything outside "Functional requirements" as not present.
