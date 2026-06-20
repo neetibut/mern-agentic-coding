@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Guidance for AI agents working in this repo. Companion docs: [`PRD.md`](PRD.md) (what/why — product requirements) and [`README.md`](README.md) (how to run/use/deploy).
+Guidance for AI agents working in this repo. Companion docs: [`docs/PRD.md`](docs/PRD.md) (what/why — product requirements) and [`README.md`](README.md) (how to run/use/deploy). For how we work with agents here, see [`docs/AGENTIC_ENGINEERING_PLAN.md`](docs/AGENTIC_ENGINEERING_PLAN.md).
 
 ## What this is
 

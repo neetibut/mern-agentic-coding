@@ -1,7 +1,7 @@
 # Architecture — NEONAUTH
 
 Durable "why" knowledge for the codebase. For *what/why at the product level* see
-[`../PRD.md`](../PRD.md); for *how to run/deploy* see [`../README.md`](../README.md); for
+[`PRD.md`](PRD.md); for *how to run/deploy* see [`../README.md`](../README.md); for
 *working conventions* see [`../AGENTS.md`](../AGENTS.md).
 
 ## Repository shape
@@ -12,9 +12,13 @@ single root `package-lock.json`; `npm install` at the root installs and hoists e
 ```
 /package.json          workspace root — workspaces: ["apps/*", "packages/*"]
 /AGENTS.md             always-loaded agent context (lean: stack, commands, conventions)
+/CLAUDE.md             Claude Code entry — one-line import of AGENTS.md
 /README.md             human onboarding
-/PRD.md                product requirements (what/why)
-/docs/architecture.md  this file — durable "why"
+/docs/
+   BUSINESS_PROBLEMS.md       the problems this app solves (human-authored, first)
+   PRD.md                     product requirements (what/why)
+   AGENTIC_ENGINEERING_PLAN.md  how we work with AI agents here
+   architecture.md            this file — durable "why"
 /apps/
    api/   @neonauth/api   Express + Mongoose API
    web/   @neonauth/web   React + Vite SPA

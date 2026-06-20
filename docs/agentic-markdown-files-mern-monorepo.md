@@ -14,10 +14,13 @@
 ```
 /package.json              ← workspace root: workspaces ["apps/*", "packages/*"]
 /AGENTS.md                 ← root: stack, workspace map, global commands & conventions
+/CLAUDE.md                 ← Claude Code entry point (one-line import of AGENTS.md)
 /README.md                 ← human onboarding (not for agents)
-/PRD.md                    ← product requirements (what/why)
 /CONTRIBUTING.md           ← (optional) commit / PR / branch conventions
 /docs/
+   BUSINESS_PROBLEMS.md    ← the problems the product solves (human-authored, first)
+   PRD.md                  ← product requirements (what/why)
+   AGENTIC_ENGINEERING_PLAN.md  ← how the team works with AI agents
    architecture.md         ← data flow, auth, deployment topology
    adr/0001-use-mongoose.md   ← architecture decision records (one per decision)
 /apps/
@@ -66,7 +69,7 @@ half of that story:
   conventions, and points at the heavy docs when they're needed.
 
 So "context is the material" (the deck) and "keep always-loaded context lean" (this file) are not
-in tension: the rich context lives in `docs/` and `PRD.md`; `AGENTS.md` is the thin, ever-present
+in tension: the rich context lives in `docs/`; `AGENTS.md` is the thin, ever-present
 index that routes the agent to it.
 
 ---
