@@ -18,7 +18,7 @@ single root `package-lock.json`; `npm install` at the root installs and hoists e
    BUSINESS_PROBLEMS.md       the problems this app solves (human-authored, first)
    PRD.md                     product requirements (what/why)
    AGENTIC_ENGINEERING_PLAN.md  how we work with AI agents here
-   architecture.md            this file — durable "why"
+   ARCHITECTURE.md            this file — durable "why"
 /apps/
    api/   @neonauth/api   Express + Mongoose API
    web/   @neonauth/web   React + Vite SPA

@@ -3,7 +3,7 @@
 **Status:** First-pass, human-authored. This is the *starting point* — written before the PRD to
 set direction. It is deliberately **problem-focused**: who hurts, why it matters, and what a good
 outcome looks like. It intentionally avoids solutions, scope decisions, and architecture — those
-come later in [`PRD.md`](PRD.md) and [`architecture.md`](architecture.md).
+come later in [`PRD.md`](PRD.md) and [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
 > How to use this doc: read it critically. The next step is to **challenge it with an AI thinking
 > partner** — find the vague problems, question the assumptions, and sharpen the statements —

@@ -24,7 +24,7 @@ An **npm-workspaces monorepo**:
 - **[AGENTS.md](AGENTS.md)** — guidance for AI agents working in this codebase.
 - **[docs/PRD.md](docs/PRD.md)** — product requirements: what the app does, for whom, and why.
 - **[docs/BUSINESS_PROBLEMS.md](docs/BUSINESS_PROBLEMS.md)** — the problems this app exists to solve.
-- **[docs/architecture.md](docs/architecture.md)** — durable "why": structure, auth/data flow, deploy topology.
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** — durable "why": structure, auth/data flow, deploy topology.
 - **[docs/AGENTIC_ENGINEERING_PLAN.md](docs/AGENTIC_ENGINEERING_PLAN.md)** — how we work with AI agents on this repo.
 
 ---
