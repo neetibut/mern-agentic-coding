@@ -142,7 +142,7 @@
 <section class="slide cover active" id="cover">
   <h1>Agentic AI Coding<br>on a <span class="accent">MERN Codebase</span></h1>
   <p class="lede">Not asking an AI to write code &mdash; working with a coding agent the way an engineer would: clear context, a reviewed plan, narrow changes, and verification you can trust.</p>
-  <p class="byline">Live: adding one small feature to an app that already works.</p>
+  <p class="byline">Session Task: Add one small feature to an existing app.</p>
 </section>
 
 <!-- ============================== GUIDING PRINCIPLE ============================== -->
@@ -260,8 +260,8 @@
 
 <section class="slide idea" id="invariant">
   <div class="kicker">The heart of the feature</div>
-  <div class="headline">Exactly <span class="accent">one</span> default &mdash; enforced on the server.</div>
-  <p class="sub">At most one default, and exactly one whenever there&rsquo;s at least one address. The rule lives in the <b>controller</b>, not just the UI &mdash; a client could call the API directly.</p>
+  <div class="headline">Exactly one default &mdash; the rule <span class="accent">you</span> must make explicit.</div>
+  <p class="sub">The agent builds what you specify. Naming this invariant &mdash; and deciding it belongs on the <b>server</b>, not just the UI &mdash; is the engineering judgment the agent can&rsquo;t take over for you.</p>
 </section>
 
 <section class="slide" id="edge-cases">
@@ -316,7 +316,7 @@ mern-agentic-coding/<br>
   <div class="body">
     <div class="maplist">
       <div class="mrow"><span class="mn">1</span><span class="ml">Is the <b>data-model change minimal</b> &mdash; ideally one boolean?</span><span class="mo">minimal</span></div>
-      <div class="mrow"><span class="mn">2</span><span class="ml">Is the invariant enforced <b>server-side</b>, not just the UI?</span><span class="mo">correctness</span></div>
+      <div class="mrow"><span class="mn">2</span><span class="ml">Did the agent put the invariant on the <b>server</b>, not just the UI?</span><span class="mo">correctness</span></div>
       <div class="mrow"><span class="mn">3</span><span class="ml">Are <b>all four edge cases</b> handled?</span><span class="mo">completeness</span></div>
       <div class="mrow"><span class="mn">4</span><span class="ml">Does it touch anything it <b>shouldn&rsquo;t</b> &mdash; auth or profile?</span><span class="mo">scope</span></div>
     </div>
@@ -336,7 +336,7 @@ mern-agentic-coding/<br>
       <div class="nrow"><span class="nn">4</span><span class="nt">Delete the default &mdash; is another <b>promoted</b>? Delete the last &mdash; no default, no errors?</span></div>
       <div class="nrow"><span class="nn">5</span><span class="nt">Call the API <b>directly</b> &mdash; still exactly one default, without the UI&rsquo;s help.</span></div>
     </div>
-    <div class="closing">The check most people skip is the last one &mdash; the invariant holds <b>even when the UI isn&rsquo;t involved</b>.</div>
+    <div class="closing">I don&rsquo;t take the agent&rsquo;s &ldquo;done&rdquo; on trust &mdash; verifying the invariant myself, straight against the API, is how <b>I stay responsible for correctness</b>.</div>
   </div>
 </section>
 
